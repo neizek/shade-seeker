@@ -30,10 +30,11 @@
 		}
 	},
 	"peerDependencies": {
-		"svelte": "^5.0.0",
-		"@sveltejs/kit": "^1.0.0"
+		"@sveltejs/kit": "^1.0.0",
+		"svelte": "^5.0.0"
 	},
 	"devDependencies": {
+		"@capacitor/assets": "^3.0.5",
 		"@capacitor/cli": "^7.1.0",
 		"@eslint/compat": "^1.2.5",
 		"@eslint/js": "^9.18.0",

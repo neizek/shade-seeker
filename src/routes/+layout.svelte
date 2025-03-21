@@ -1,6 +1,5 @@
 <script>
 	import Background from "$lib/components/Background.svelte";
-	import '$lib/styles/main.scss';
 </script>
 
 <Background>

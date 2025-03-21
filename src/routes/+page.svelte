@@ -3,9 +3,12 @@
 	import Game from "$lib/components/Game.svelte";
 	import { banner } from "$lib/stores/admob.js";
 	import { maxScore } from "$lib/stores/score.js";
+	import { onMount } from "svelte";
 	let isGameOn: boolean = false;
 
-	banner();
+	onMount(async () => {
+		await banner();
+	})
 </script>
 {#if isGameOn}
 	<Game bind:isGameOn="{isGameOn}" />
