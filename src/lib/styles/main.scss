@@ -1,0 +1,44 @@
+
+* {
+    margin: 0px;
+    padding: 0px;
+	color: white;
+}
+
+body {
+	margin: 0;
+    font-family: 'Exo', sans-serif;
+}
+
+.vertical-flex {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.space-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+}
+
+.line-blocks {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    align-items: center;
+}
+
+.max-width {
+    width: 100%;
+}
+
+.space {
+    &-l {
+        gap: 16px;
+    }
+    &-xl {
+        gap: 32px;
+    }
+}
