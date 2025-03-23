@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-        <string>blinker-mania-game</string>
+        <string>Shade Seeker</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -57,6 +57,6 @@
 	</dict>
 	</array>
 	<key>NSUserTrackingUsageDescription</key>
-	<string>[Why you use NSUserTracking. ex: This identifier will be used to deliver personalized ads to you.]</string>
+	<string>This identifier will be used to deliver personalized ads to you.</string>
 </dict>
 </plist>

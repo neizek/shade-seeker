@@ -1,13 +1,14 @@
-import { dev } from '$app/environment';
-import {
-	AdMob,
-	type BannerAdOptions,
-	BannerAdSize,
-	BannerAdPosition,
-	BannerAdPluginEvents,
-	AdmobConsentStatus
-	// type AdMobBannerSize,
-  } from '@capacitor-community/admob';
+	import { dev } from '$app/environment';
+	import {
+		AdMob,
+		type BannerAdOptions,
+		BannerAdSize,
+		BannerAdPosition,
+		BannerAdPluginEvents,
+		AdmobConsentStatus
+		// type AdMobBannerSize,
+	} from '@capacitor-community/admob';
+	import { AppTrackingTransparency } from 'capacitor-plugin-app-tracking-transparency';
 
 	export async function initializeAds(): Promise<void> {
 		await AdMob.initialize();
@@ -63,4 +64,24 @@ import {
 			// npa: true
 		};
 		AdMob.showBanner(options);
+	}
+
+	// src/lib/tracking.js
+
+	export async function requestTrackingPermission() {
+		try {
+			// First check the current status
+			const statusResponse = await AppTrackingTransparency.getStatus();
+			
+			// If status is not determined, request permission
+			if (statusResponse.status === 'notDetermined') {
+			const permissionResponse = await AppTrackingTransparency.requestPermission();
+			return permissionResponse.status;
+			}
+
+			return statusResponse.status;
+		} catch (error) {
+			console.error('Error requesting tracking permission:', error);
+			return 'error';
+		}
 	}

@@ -1,5 +1,19 @@
 <script>
+	import { browser } from "$app/environment";
 	import Background from "$lib/components/Background.svelte";
+	import { initializeAds, requestTrackingPermission } from "$lib/stores/admob.js";
+	import { onMount } from "svelte";
+
+	onMount(async () => {
+		if (browser) {
+			const status = await requestTrackingPermission();
+			console.log('Tracking permission status:', status);
+			
+			if (status === 'authorized') {
+				initializeAds();
+			}
+		}
+	});
 </script>
 
 <Background>
