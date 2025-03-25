@@ -9,9 +9,9 @@
 			const status = await requestTrackingPermission();
 			console.log('Tracking permission status:', status);
 			
-			if (status === 'authorized') {
+			// if (status === 'authorized') {
 				initializeAds();
-			}
+			// }
 		}
 	});
 </script>
@@ -25,8 +25,6 @@
 <style lang="scss">
 	.absolute-center {
 		flex: 1;
-		// height: 100vh;
-		// padding: 16px;
 		padding: 32px;
 		flex-direction: column;
 		gap: 32px;

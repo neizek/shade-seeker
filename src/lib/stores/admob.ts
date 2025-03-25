@@ -66,6 +66,13 @@
 		AdMob.showBanner(options);
 	}
 
+	export async function showInterstitialAds() {
+		await AdMob.prepareInterstitial({
+			adId: dev ? 'ca-app-pub-3940256099942544/4411468910' : 'ca-app-pub-6359902971784664/7658690672'
+		});
+
+		await AdMob.showInterstitial();
+	}
 	// src/lib/tracking.js
 
 	export async function requestTrackingPermission() {
@@ -75,8 +82,8 @@
 			
 			// If status is not determined, request permission
 			if (statusResponse.status === 'notDetermined') {
-			const permissionResponse = await AppTrackingTransparency.requestPermission();
-			return permissionResponse.status;
+				const permissionResponse = await AppTrackingTransparency.requestPermission();
+				return permissionResponse.status;
 			}
 
 			return statusResponse.status;

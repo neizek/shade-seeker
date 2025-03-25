@@ -12,4 +12,5 @@ export function updateScore(newScore: number) {
 	}
 }
 
+export const gamesPlayed = writable(0);
 export const maxScore = writable(getScore());
