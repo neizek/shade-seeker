@@ -83,7 +83,7 @@
 	}
 
 	function startNewGame() {
-		if ($gamesPlayed % 3 === 0) {
+		if ($gamesPlayed % 3 === 0 && $gamesPlayed > 2) {
 			showInterstitialAds();
 		}
 
@@ -136,7 +136,8 @@
 <style lang="scss">
 	.Lost {
 		position: fixed;
-		max-width: 90%;
+		width: 90%;
+		max-width: 400px;
 		width: 80%;
 		margin: 0 auto;
 		z-index: 100;
