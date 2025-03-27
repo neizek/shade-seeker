@@ -59,7 +59,7 @@
 
 	function restoreGame() {
 		lostGame = false;
-		withdrawCoins(1);
+		withdrawCoins(10);
 		newField();
 		timerStopped = false;
 	}
@@ -214,7 +214,7 @@
 
 	.Rules {
 		position: fixed;
-		bottom: 16px;
+		bottom: 32px;
 		left: 0;
 		right: 0;
 		text-align: center;

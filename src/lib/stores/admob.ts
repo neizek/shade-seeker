@@ -39,6 +39,7 @@
 			consentInfo.status === AdmobConsentStatus.REQUIRED
 		) {
 			await AdMob.showConsentForm();
+			showBanner();
 		}
 	}
 
@@ -49,7 +50,7 @@
 			position: BannerAdPosition.BOTTOM_CENTER,
 			margin: 20,
 		};
-		
+
 		AdMob.showBanner(options);
 	}
 

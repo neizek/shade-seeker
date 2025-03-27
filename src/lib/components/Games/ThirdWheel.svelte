@@ -163,7 +163,7 @@
 
 	.Rules {
 		position: fixed;
-		bottom: 16px;
+		bottom: 32px;
 		left: 0;
 		right: 0;
 		text-align: center;

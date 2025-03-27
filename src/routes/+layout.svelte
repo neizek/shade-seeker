@@ -9,9 +9,7 @@
 			const status = await requestTrackingPermission();
 			console.log('Tracking permission status:', status);
 			
-			initializeAds().then(() => {
-				showBanner();
-			});
+			initializeAds();
 		}
 	});
 </script>
