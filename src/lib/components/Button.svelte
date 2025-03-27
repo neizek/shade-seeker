@@ -1,8 +1,13 @@
 <script lang="ts">
   export let label: string;
+//   export let img: string | undefined = undefined;
 </script>
 <button class="Btn" on:click>
-  <span>{label}</span>
+	<!-- {#if img}
+		<img src="{img}" alt="mode" style="width: 100%;"/>
+	{/if} -->
+	<slot></slot>
+  	<span>{label}</span>
 </button>
 
 <style lang="scss">

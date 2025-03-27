@@ -42,15 +42,15 @@
 		}
 	}
 
-	export async function banner(): Promise<void> {
+	export async function showBanner(): Promise<void> {
 		const options: BannerAdOptions = {
 			adId: dev ? 'ca-app-pub-3940256099942544/6300978111' : 'ca-app-pub-6359902971784664/1810424049',
 			adSize: BannerAdSize.ADAPTIVE_BANNER,
 			position: BannerAdPosition.BOTTOM_CENTER,
-			margin: 0,
+			margin: 20,
 		};
-
-		await AdMob.showBanner(options);
+		
+		AdMob.showBanner(options);
 	}
 
 	export async function showInterstitialAds() {
@@ -58,16 +58,21 @@
 			adId: dev ? 'ca-app-pub-3940256099942544/4411468910' : 'ca-app-pub-6359902971784664/7658690672'
 		});
 
-		await AdMob.showInterstitial();
+		AdMob.showInterstitial();
 	}
-	// src/lib/tracking.js
+
+	export async function hideBanner() {
+		AdMob.hideBanner();
+	}
+
+	export async function resumeBanner() {
+		AdMob.resumeBanner();
+	}
 
 	export async function requestTrackingPermission() {
 		try {
-			// First check the current status
 			const statusResponse = await AppTrackingTransparency.getStatus();
-			
-			// If status is not determined, request permission
+
 			if (statusResponse.status === 'notDetermined') {
 				const permissionResponse = await AppTrackingTransparency.requestPermission();
 				return permissionResponse.status;

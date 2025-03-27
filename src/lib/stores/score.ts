@@ -1,16 +1,47 @@
 import { browser } from "$app/environment";
-import { writable } from "svelte/store";
+import { writable, type Writable } from "svelte/store";
 
-function getScore() {
-	return browser ? Number(localStorage.getItem('score')) : 0;
+export type ScoreObjectType = {
+	thirdWheel: number;
+	shadeOrder: number;
 }
 
-export function updateScore(newScore: number) {
-	maxScore.set(newScore);
-	if (browser) {
-		localStorage.setItem('score', newScore.toString());
+function getScores() {
+	if (!browser) {
+		return {
+			thirdWheel: 0,
+			shadeOrder: 0
+		}
+	}
+
+	const savedScores = localStorage.getItem('scores');
+	
+	if (savedScores) {
+		return JSON.parse(savedScores);
+	} else {
+		return {
+			thirdWheel: 0,
+			shadeOrder: 0
+		}
 	}
 }
 
+export function updateScore(newScore: number, game: string) {
+	let newMaxScore: ScoreObjectType; 
+
+	maxScore.update(current => {
+		newMaxScore = {
+			...current,
+			[game]: newScore
+		}
+
+		if (browser) {
+			localStorage.setItem('scores', JSON.stringify(newMaxScore))
+		}
+
+		return newMaxScore;
+	});
+}
+
 export const gamesPlayed = writable(0);
-export const maxScore = writable(getScore());
+export const maxScore: Writable<ScoreObjectType> = writable(getScores());

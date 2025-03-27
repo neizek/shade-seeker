@@ -45,3 +45,36 @@ export function generateRandomHexColor() {
 	
 	return `#${code}`;
 }
+
+export function getDarkerColor(hexColor: string, tintStrength: number) {
+	// Ensure the tintStrength is between 0 and 100
+	if (tintStrength < 0 || tintStrength > 100) {
+	  throw new Error("tintStrength must be between 0 and 100.");
+	}
+  
+	// Remove the hash if present
+	hexColor = hexColor.replace("#", "");
+  
+	// Parse the hex color into RGB components
+	let r = parseInt(hexColor.substring(0, 2), 16);
+	let g = parseInt(hexColor.substring(2, 4), 16);
+	let b = parseInt(hexColor.substring(4, 6), 16);
+  
+	// Calculate the darkening factor (convert percentage to decimal)
+	const factor = tintStrength / 100;
+  
+	// Darken each component
+	r = Math.max(0, Math.round(r * (1 - factor)));
+	g = Math.max(0, Math.round(g * (1 - factor)));
+	b = Math.max(0, Math.round(b * (1 - factor)));
+  
+	// Convert back to hex and return the darker color
+	const darkerColor =
+	"#" +
+	r.toString(16).padStart(2, "0") +
+	g.toString(16).padStart(2, "0") +
+	b.toString(16).padStart(2, "0");
+
+	return darkerColor;
+}
+	

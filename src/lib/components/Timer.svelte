@@ -31,22 +31,21 @@
 	onMount(() => {
 		startCounting();
 	});
+
 </script>
 
-<progress class="Timer" value={elapsed / duration}></progress>
+
+<progress class="Timer" value={1 - (elapsed / duration)}></progress>
+
 
 <style lang="scss">
 	.Timer {
-		width: var(--width, 100%);
+		width: 100%;
+		max-width: 200px;
 		height: 16px;
-		// background-color: white;
+		background-color: #a5d5e4;
 		border-radius: 16px;
 		border: 3px solid;
 		overflow: hidden;
 	}
-
-	// .Fill {
-	// 	height: 100%;
-	// 	background-color: #93b3ff;
-	// }
 </style>
