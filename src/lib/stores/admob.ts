@@ -41,7 +41,7 @@
 			await AdMob.showConsentForm();
 		}
 
-		showBanner();
+		// showBanner();
 	}
 
 	export async function showBanner(): Promise<void> {

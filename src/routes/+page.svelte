@@ -13,10 +13,11 @@ import Button from "$lib/components/Button.svelte";
 
 	$: {
 		if (isGameOn) {
-			hideBanner();
-		} else {
+			// hideBanner();
 			showBanner();
-			resumeBanner();
+		} else {
+			// showBanner();
+			// resumeBanner();
 		}
 	}
 
