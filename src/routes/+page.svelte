@@ -64,8 +64,13 @@
 	}
 
 	.ModeButtons {
-		display: grid;
-		grid-template-columns: repeat(2, 1fr);
+		display: flex;
+		flex-direction: row;
+		gap: 16px;
+
+		> div {
+			flex: 1;
+		}
 	}
 
 	.ModeButton {
