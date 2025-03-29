@@ -69,7 +69,6 @@
 	}
 
 	.ModeButton {
-		width: 100%;
 		padding: 4px;
 		display: flex;
 		aspect-ratio: 1;
