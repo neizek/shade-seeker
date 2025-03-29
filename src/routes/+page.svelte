@@ -58,7 +58,6 @@
 
 <style lang="scss">
 	.Menu {
-		// width: auto;
 		width: 100%;
 		max-width: 400px;
 		align-items: center;
@@ -71,9 +70,7 @@
 	}
 
 	.ModeButton {
-		// width: 100%;
 		padding: 4px;
-		// display: flex;
 		border-radius: 5%;
 		background-image: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);
 		transition: all .3 ease-out;
@@ -83,29 +80,12 @@
 			filter: grayscale(0);
 		}
 
-		// div {
-		// 	display: flex;
-		// 	background-color: rgb(5, 6, 45);
-		// 	padding: 8px 16px;
-		// 	border-radius: 5%;
-		// 	width: 100%;
-		// 	height: 100%;
-
-			img {
-				width: 100%;
-				height: 100%;
-				background-color: rgb(5, 6, 45);
-				padding: 16px;
-				border-radius: 5%;
-			}
-
-			// span {
-			// 	text-align: center;
-			// 	font-size: 14px;
-			// 	text-overflow: ellipsis; 
-			// 	overflow: hidden; 
-			// 	white-space: nowrap;
-			// }
-		// }
+		img {
+			width: 100%;
+			height: 100%;
+			background-color: rgb(5, 6, 45);
+			padding: 16px;
+			border-radius: 5%;
+		}
 	}
 </style>
