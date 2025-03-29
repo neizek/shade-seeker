@@ -65,19 +65,15 @@
 	}
 
 	.ModeButtons {
-		display: flex;
-		flex-direction: row;
-		gap: 16px;
-
 		> div {
 			flex: 1;
 		}
 	}
 
 	.ModeButton {
+		// width: 100%;
 		padding: 4px;
-		display: flex;
-		aspect-ratio: 1;
+		// display: flex;
 		border-radius: 5%;
 		background-image: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);
 		transition: all .3 ease-out;
@@ -97,6 +93,7 @@
 
 			img {
 				width: 100%;
+				height: 100%;
 				background-color: rgb(5, 6, 45);
 				padding: 16px;
 				border-radius: 5%;
