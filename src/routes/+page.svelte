@@ -2,7 +2,7 @@
 	import Badge from "$lib/components/Badge.svelte";
 import Button from "$lib/components/Button.svelte";
 	import Game from "$lib/components/Game.svelte";
-	import { hideBanner, resumeBanner, showBanner } from "$lib/stores/admob.js";
+	import { removeBanner, showBanner } from "$lib/stores/admob.js";
 	import { coins } from "$lib/stores/coins.js";
 	import { Modes } from "$lib/stores/modes.js";
 	import { maxScore } from "$lib/stores/score.js";
@@ -13,11 +13,9 @@ import Button from "$lib/components/Button.svelte";
 
 	$: {
 		if (isGameOn) {
-			// hideBanner();
 			showBanner();
 		} else {
-			// showBanner();
-			// resumeBanner();
+			removeBanner;
 		}
 	}
 
@@ -60,7 +58,9 @@ import Button from "$lib/components/Button.svelte";
 			<Button label="Order mode" img="/rgb.svg"></Button> -->
 		</div>
 		<div class="max-width">
-			<Button label="START" on:click="{() => isGameOn = true}"/>
+			<Button label="START" on:click="{() => isGameOn = true}">
+				<img src="/play.svg" alt="Play" style="height: 32px; padding: 0 8px 0 4px;" />
+			</Button>
 		</div>
 	</div>
 {/if}

@@ -10,9 +10,9 @@
 	import { coins } from "$lib/stores/coins.js";
 </script>
 
-<div class="Lost vertical-flex space-l" in:scale="{{duration: 100}}">
+<div class="Lost vertical-flex space-l" transition:scale="{{duration: 100}}">
 	<h1 style="text-align: center;">{gameOverText}</h1>
-	<div class="vertical-flex space">
+	<div class="Results space-between space">
 		<span>Final score: {score}</span>
 		{#if earnedCoins}
 			<span> Coins earned: {earnedCoins} </span>
@@ -50,5 +50,11 @@
 	.Coin {
 		height: 32px;
 		padding: 0 8px 0 4px;
+	}
+
+	.Results {
+		span {
+			text-shadow: 1px 1px 2px #3c3c3c;
+		}
 	}
 </style>

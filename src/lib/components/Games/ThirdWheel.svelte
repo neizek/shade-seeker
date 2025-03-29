@@ -98,6 +98,8 @@
 		lostGame = false;
 		updateField(adjustmentLevel);
 		timerStopped = false;
+		elapsed = 0;
+		timer = 10000;
 	}
 
 	function startNewGame() {
