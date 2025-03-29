@@ -35,11 +35,11 @@
 </script>
 
 
-<progress class="Timer" value={1 - (elapsed / duration)}></progress>
+<progress value={1 - (elapsed / duration)}></progress>
 
 
 <style lang="scss">
-	.Timer {
+	progress {
 		width: 100%;
 		max-width: 200px;
 		height: 16px;
@@ -47,5 +47,14 @@
 		border-radius: 16px;
 		border: 3px solid;
 		overflow: hidden;
+	}
+
+	::-webkit-progress-bar {
+		background-color: #a5d5e4;
+	}
+
+	
+	::-webkit-progress-value {
+		background-color: #4e54c8;
 	}
 </style>

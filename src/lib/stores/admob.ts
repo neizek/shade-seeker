@@ -40,7 +40,7 @@
 		) {
 			await AdMob.showConsentForm();
 		}
-		
+
 		showBanner();
 	}
 

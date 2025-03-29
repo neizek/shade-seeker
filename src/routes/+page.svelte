@@ -2,11 +2,12 @@
 	import Badge from "$lib/components/Badge.svelte";
 import Button from "$lib/components/Button.svelte";
 	import Game from "$lib/components/Game.svelte";
-	import { hideBanner, resumeBanner } from "$lib/stores/admob.js";
+	import { hideBanner, resumeBanner, showBanner } from "$lib/stores/admob.js";
 	import { coins } from "$lib/stores/coins.js";
 	import { Modes } from "$lib/stores/modes.js";
 	import { maxScore } from "$lib/stores/score.js";
 	import { addLeadingZeros } from "$lib/utils/numbers.js";
+	import { onMount } from "svelte";
 	let isGameOn: boolean = false;
 	let mode: Modes = Modes.thirdWheel;
 
@@ -18,7 +19,11 @@ import Button from "$lib/components/Button.svelte";
 		}
 	}
 
-	$: console.log($coins)
+	onMount(() => {
+		showBanner();
+	});
+
+	// $: console.log($coins)
 </script>
 
 {#if isGameOn}

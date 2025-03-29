@@ -120,7 +120,11 @@
 	</div>
 	<Timer --width="150px" timer="{timer}" bind:elapsed="{elapsed}" timerStopped="{timerStopped}"/>
 </div>
-<h2>Your score {score}</h2>
+{#if score === 0}
+	<span class="Rules">Find the odd cube out</span>
+{:else}
+	<h2 in:scale="{{duration: 200}}">Your score {score}</h2>
+{/if}
 <div class="Game" in:scale style="grid-template-columns: repeat({Math.sqrt(fieldsQty)}, 1fr);">
 	{#each cubes as cube, index}
 		<!-- svelte-ignore a11y_click_events_have_key_events -->
@@ -132,9 +136,6 @@
 		</div>
 	{/each}
 </div>
-{#if score < 2}
-	<span out:fade class="Rules">Find the odd cube out</span>
-{/if}
 {#if lostGame}
 	<PopUp
 		score="{score}"
@@ -162,10 +163,6 @@
 	}
 
 	.Rules {
-		position: fixed;
-		bottom: 32px;
-		left: 0;
-		right: 0;
 		text-align: center;
 		padding: 0 32px;
 	}

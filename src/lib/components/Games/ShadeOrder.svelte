@@ -137,7 +137,7 @@
 			timer = 15000;
 		} else {
 			cubesQuantity = 12;
-			timer = 15000;
+			timer = 17000;
 		}
 
 		cubes = generateCubes();
@@ -164,7 +164,11 @@
 	</div>
 	<Timer --width="150px" timer="{timer}" bind:elapsed="{elapsed}" timerStopped="{timerStopped}"/>
 </div>
-<h2>Your score {score}</h2>
+{#if score === 0}
+	<span class="Rules">Mark the cubes in order from lightest to darkest.</span>
+{:else}
+	<h2 in:scale="{{duration: 200}}">Your score {score}</h2>
+{/if}
 <div class="Game" in:scale>
 	{#each cubes as cube, index}
 		<!-- svelte-ignore a11y_click_events_have_key_events -->
@@ -179,9 +183,6 @@
 		</div>
 	{/each}
 </div>
-{#if score < 2}
-	<span out:fade class="Rules">Mark the cubes in order from lightest to darkest.</span>
-{/if}
 
 {#if lostGame}
 	<PopUp
@@ -213,10 +214,6 @@
 	}
 
 	.Rules {
-		position: fixed;
-		bottom: 32px;
-		left: 0;
-		right: 0;
 		text-align: center;
 		padding: 0 32px;
 	}
