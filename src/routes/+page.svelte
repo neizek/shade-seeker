@@ -1,13 +1,12 @@
 <script lang="ts">
 	import Badge from "$lib/components/Badge.svelte";
-import Button from "$lib/components/Button.svelte";
+	import Button from "$lib/components/Button.svelte";
 	import Game from "$lib/components/Game.svelte";
 	import { removeBanner, showBanner } from "$lib/stores/admob.js";
 	import { coins } from "$lib/stores/coins.js";
 	import { Modes } from "$lib/stores/modes.js";
 	import { maxScore } from "$lib/stores/score.js";
 	import { addLeadingZeros } from "$lib/utils/numbers.js";
-	import { onMount } from "svelte";
 	let isGameOn: boolean = false;
 	let mode: Modes = Modes.thirdWheel;
 
@@ -15,7 +14,7 @@ import Button from "$lib/components/Button.svelte";
 		if (isGameOn) {
 			showBanner();
 		} else {
-			removeBanner;
+			removeBanner();
 		}
 	}
 
@@ -92,7 +91,7 @@ import Button from "$lib/components/Button.svelte";
 		// 	height: 100%;
 
 			img {
-				width: inherit;
+				width: 100%;
 				background-color: rgb(5, 6, 45);
 				padding: 16px;
 				border-radius: 5%;
