@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { scale } from "svelte/transition";
 	import Button from "./Button.svelte";
-	export let gameOverText: string;
+	export let lostGame: string | undefined;
 	export let startNewGame: () => void;
 	export let restoreGame: () => void;
 	export let score: number;
@@ -10,12 +10,13 @@
 	import { coins } from "$lib/stores/coins.js";
 </script>
 
+{#if lostGame}
 <div class="Lost vertical-flex space-l" transition:scale="{{duration: 100}}">
-	<h1 style="text-align: center;">{gameOverText}</h1>
+	<h1 style="text-align: center;">{lostGame === 'timeIsOut' ? 'Time is out' : 'Game Over'}</h1>
 	<div class="Results space-between space">
-		<span>Final score: {score}</span>
+		<span class="text-shadow">Final score: {score}</span>
 		{#if earnedCoins}
-			<span> Coins earned: {earnedCoins} </span>
+			<span class="text-shadow"> Coins earned: {earnedCoins} </span>
 		{/if}
 	</div>
 	<div class="vertical-flex">
@@ -31,6 +32,7 @@
 		<Button label="Back to Home" on:click="{() => isGameOn = false}" />
 	</div>
 </div>
+{/if}
 
 <style lang="scss">
 	.Lost {
@@ -50,11 +52,5 @@
 	.Coin {
 		height: 32px;
 		padding: 0 8px 0 4px;
-	}
-
-	.Results {
-		span {
-			text-shadow: 1px 1px 2px #3c3c3c;
-		}
 	}
 </style>

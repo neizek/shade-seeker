@@ -22,6 +22,8 @@
 
 <style lang="scss">
 	.absolute-center {
+		max-width: 800px;
+		margin: 0 auto;
 		flex: 1;
 		padding: 32px;
 		flex-direction: column;
@@ -30,5 +32,9 @@
 		align-items: center;
 		justify-content: center;
 		justify-items: center;
+
+		@media (min-width: 768px) {
+			padding-bottom: 90px;
+		}
 	}
 </style>

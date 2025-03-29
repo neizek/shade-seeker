@@ -10,5 +10,5 @@
 <svelte:component
 	this="{mode === Modes.thirdWheel ? ThirdWheel : ShadeOrder}"
 	bind:isGameOn="{isGameOn}"
->
-</svelte:component>
+/>
+

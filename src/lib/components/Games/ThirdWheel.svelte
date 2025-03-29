@@ -12,7 +12,7 @@
 
 	let fieldsQty: number;
 	let cubes: number[];
-	let lostGame: boolean;
+	let lostGame: string | undefined = undefined;
 	let randomNumber: number;
 	let color: string;
 	let score: number;
@@ -21,7 +21,6 @@
 	let timer: number = 10000;
 	let elapsed: number = 0;
 	let timerStopped: boolean = false;
-	let gameOverText: string = 'Game Over';
 	let coins: number = 0;
 
 	startNewGame();
@@ -71,12 +70,11 @@
 	}
 
 	function stopGame() {
-		lostGame = true;
 		timerStopped = true;
 		if (elapsed >= timer) {
-			gameOverText = "Time is out"
+			lostGame = 'timeIsOut';
 		} else {
-			gameOverText = "Game Over"
+			lostGame = 'gameOver';
 		}
 		$gamesPlayed++;
 		coins = Math.floor(score / 10);
@@ -95,7 +93,7 @@
 
 	function restoreGame() {
 		withdrawCoins(10);
-		lostGame = false;
+		lostGame = undefined;
 		updateField(adjustmentLevel);
 		timerStopped = false;
 		elapsed = 0;
@@ -106,7 +104,7 @@
 		elapsed = 0;
 		timer = 10000;
 		timerStopped = false;
-		lostGame = false;
+		lostGame = undefined;
 		score = 0;
 		adjustmentLevel = 1;
 		fieldsQty = 9;
@@ -138,16 +136,15 @@
 		</div>
 	{/each}
 </div>
-{#if lostGame}
-	<PopUp
-		score="{score}"
-		gameOverText="{gameOverText}"
-		startNewGame="{startNewGame}"
-		bind:isGameOn="{isGameOn}"
-		earnedCoins="{coins}"
-		restoreGame="{restoreGame}"
-	/>
-{/if}
+
+<PopUp
+	score="{score}"
+	lostGame="{lostGame}"
+	startNewGame="{startNewGame}"
+	bind:isGameOn="{isGameOn}"
+	earnedCoins="{coins}"
+	restoreGame="{restoreGame}"
+/>
 
 <style lang="scss">
 

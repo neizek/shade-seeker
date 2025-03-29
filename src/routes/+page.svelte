@@ -19,7 +19,10 @@ import Button from "$lib/components/Button.svelte";
 		}
 	}
 
-	// $: console.log($coins)
+	const games = [
+		{ icon: 'rgb', label: 'Third Wheel', mode: Modes.thirdWheel},
+		{ icon: 'order', label: 'Shade Order', mode: Modes.shadeOrder},
+	];
 </script>
 
 {#if isGameOn}
@@ -34,28 +37,17 @@ import Button from "$lib/components/Button.svelte";
 		<!-- svelte-ignore a11y_no_static_element_interactions -->
 		<!-- svelte-ignore a11y_click_events_have_key_events -->
 		<div class="ModeButtons max-width space-between space-l">
-			<div
-				class="ModeButton"
-				class:active="{mode === Modes.thirdWheel}"
-				on:click={() => mode = Modes.thirdWheel}
-			>
-				<div class="vertical-flex space">
-					<img src="/rgb.svg" alt="Odd mode" />
-					<span>Third Wheel</span>
+			{#each games as game}
+				<div class="vertical-flex space" on:click={() => mode = game.mode}>
+					<div
+						class="ModeButton"
+						class:active="{mode === game.mode}"
+					>
+						<img src="/{game.icon}.svg" alt="{game.label} mode" />
+					</div>
+					<span class="text-shadow text-center">{game.label}</span>
 				</div>
-			</div>
-			<div
-				class="ModeButton"
-				class:active="{mode === Modes.shadeOrder}"
-				on:click={() => mode = Modes.shadeOrder}
-			>
-				<div class="vertical-flex space">
-					<img src="/order.svg" alt="Order mode" />
-					<span>Shade Order</span>
-				</div>
-			</div>
-			<!-- <Button label="Odd mode" img="/order.svg"></Button>
-			<Button label="Order mode" img="/rgb.svg"></Button> -->
+			{/each}
 		</div>
 		<div class="max-width">
 			<Button label="START" on:click="{() => isGameOn = true}">
@@ -78,6 +70,7 @@ import Button from "$lib/components/Button.svelte";
 	}
 
 	.ModeButton {
+		width: 100%;
 		padding: 4px;
 		display: flex;
 		aspect-ratio: 1;
@@ -90,25 +83,28 @@ import Button from "$lib/components/Button.svelte";
 			filter: grayscale(0);
 		}
 
-		div {
-			display: flex;
-			background-color: rgb(5, 6, 45);
-			padding: 8px 16px;
-			border-radius: 5%;
-			width: 100%;
-			height: 100%;
+		// div {
+		// 	display: flex;
+		// 	background-color: rgb(5, 6, 45);
+		// 	padding: 8px 16px;
+		// 	border-radius: 5%;
+		// 	width: 100%;
+		// 	height: 100%;
 
 			img {
 				width: inherit;
+				background-color: rgb(5, 6, 45);
+				padding: 16px;
+				border-radius: 5%;
 			}
 
-			span {
-				text-align: center;
-				font-size: 14px;
-				text-overflow: ellipsis; 
-				overflow: hidden; 
-				white-space: nowrap;
-			}
-		}
+			// span {
+			// 	text-align: center;
+			// 	font-size: 14px;
+			// 	text-overflow: ellipsis; 
+			// 	overflow: hidden; 
+			// 	white-space: nowrap;
+			// }
+		// }
 	}
 </style>

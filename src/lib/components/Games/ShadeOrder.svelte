@@ -20,8 +20,8 @@
 	let cubes: CubeType[] = generateCubes();
 	let counter: number = 0;
 	let score: number = 0;
-	let lostGame: boolean = false;
-	let gameOverText: string = 'Game Over';
+	let lostGame: string | undefined = undefined;
+	// let gameOverText: string = 'Game Over';
 	let timer: number = 10000;
 	let elapsed: number;
 	let timerStopped: boolean = false;
@@ -58,19 +58,18 @@
 	}
 
 	function restoreGame() {
-		lostGame = false;
+		lostGame = undefined;
 		withdrawCoins(10);
 		newField();
 		timerStopped = false;
 	}
 
 	function stopGame() {
-		lostGame = true;
 		timerStopped = true;
 		if (elapsed >= timer) {
-			gameOverText = "Time is out"
+			lostGame = 'timeIsOut';
 		} else {
-			gameOverText = "Game Over"
+			lostGame = 'gameOver';
 		}
 
 		coins = Math.floor(score / 10);
@@ -150,7 +149,7 @@
 	}
 
 	function startNewGame() {
-		lostGame = false;
+		lostGame = undefined;
 		timerStopped = false;
 		score = 0;
 		newField();
@@ -184,16 +183,14 @@
 	{/each}
 </div>
 
-{#if lostGame}
-	<PopUp
-		score="{score}"
-		gameOverText="{gameOverText}"
-		startNewGame="{startNewGame}"
-		bind:isGameOn="{isGameOn}"
-		earnedCoins="{coins}"
-		restoreGame="{restoreGame}"
-	/>
-{/if}
+<PopUp
+	score="{score}"
+	lostGame="{lostGame}"
+	startNewGame="{startNewGame}"
+	bind:isGameOn="{isGameOn}"
+	earnedCoins="{coins}"
+	restoreGame="{restoreGame}"
+/>
 
 <style lang="scss">
 	.Game {
