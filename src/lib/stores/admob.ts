@@ -39,8 +39,9 @@
 			consentInfo.status === AdmobConsentStatus.REQUIRED
 		) {
 			await AdMob.showConsentForm();
-			showBanner();
 		}
+		
+		showBanner();
 	}
 
 	export async function showBanner(): Promise<void> {
@@ -50,7 +51,7 @@
 			position: BannerAdPosition.BOTTOM_CENTER,
 			margin: 20,
 		};
-
+		
 		AdMob.showBanner(options);
 	}
 
