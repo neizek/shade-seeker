@@ -15,13 +15,10 @@ import Button from "$lib/components/Button.svelte";
 		if (isGameOn) {
 			hideBanner();
 		} else {
+			showBanner();
 			resumeBanner();
 		}
 	}
-
-	onMount(() => {
-		showBanner();
-	});
 
 	// $: console.log($coins)
 </script>
