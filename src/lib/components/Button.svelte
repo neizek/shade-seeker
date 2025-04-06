@@ -1,13 +1,10 @@
 <script lang="ts">
   export let label: string;
-//   export let img: string | undefined = undefined;
+  export let isLoading: boolean = false;
 </script>
 <button class="Btn" on:click>
-	<!-- {#if img}
-		<img src="{img}" alt="mode" style="width: 100%;"/>
-	{/if} -->
 	<slot></slot>
-  	<span>{label}</span>
+  	<span>{isLoading ? 'Loading...' : label}</span>
 </button>
 
 <style lang="scss">

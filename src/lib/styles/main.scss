@@ -12,6 +12,15 @@ body {
     // font-family: 'Exo', sans-serif;
 }
 
+.hide-scroll {
+	-ms-overflow-style: none;
+    scrollbar-width: none;
+
+	&::-webkit-scrollbar { 
+		display: none;
+	}
+}
+
 .vertical-flex {
     display: flex;
     flex-direction: column;

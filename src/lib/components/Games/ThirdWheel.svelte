@@ -5,7 +5,7 @@
 	import { showInterstitialAds } from "$lib/stores/admob.js";
 	import Timer from "../Timer.svelte";
 	import { Modes } from "$lib/stores/modes.js";
-	import PopUp from "../PopUp.svelte";
+	import PopUp from "../LostGame.svelte";
 	import { addCoins, withdrawCoins } from "$lib/stores/coins.js";
 
 	export let isGameOn: boolean;

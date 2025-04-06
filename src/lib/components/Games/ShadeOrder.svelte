@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { generateRandomHexColor, getDarkerColor } from "$lib/utils/colors.js";
 	import { fade, scale } from "svelte/transition";
-	import PopUp from "../PopUp.svelte";
+	import PopUp from "../LostGame.svelte";
 	import { gamesPlayed, maxScore, updateScore } from "$lib/stores/score.js";
 	import Timer from "../Timer.svelte";
 	import { showInterstitialAds } from "$lib/stores/admob.js";

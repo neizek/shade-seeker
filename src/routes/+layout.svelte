@@ -1,6 +1,7 @@
 <script>
 	import { browser } from "$app/environment";
 	import Background from "$lib/components/Background.svelte";
+	import Dialog from "$lib/components/Dialog.svelte";
 	import { initializeAds, requestTrackingPermission, showBanner } from "$lib/stores/admob.js";
 	import { onMount } from "svelte";
 
@@ -8,16 +9,18 @@
 		if (browser) {
 			const status = await requestTrackingPermission();
 			console.log('Tracking permission status:', status);
-			
 			initializeAds();
 		}
 	});
+
 </script>
 
 <Background>
-	<div class="absolute-center"> 
-		<slot></slot>
-	</div>
+	<Dialog>
+		<div class="absolute-center"> 
+			<slot></slot>
+		</div>
+	</Dialog>
 </Background>
 
 <style lang="scss">

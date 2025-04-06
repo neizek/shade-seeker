@@ -1,14 +1,20 @@
 <script lang="ts">
 	import Badge from "$lib/components/Badge.svelte";
 	import Button from "$lib/components/Button.svelte";
+	import { type CreateDialog } from "$lib/components/Dialog.svelte";
 	import Game from "$lib/components/Game.svelte";
+	import LeaderBoard from "$lib/components/LeaderBoard.svelte";
 	import { removeBanner, showBanner } from "$lib/stores/admob.js";
 	import { coins } from "$lib/stores/coins.js";
+	import { getTopPlayers } from "$lib/stores/firebase.js";
 	import { Modes } from "$lib/stores/modes.js";
+	import { playerId } from "$lib/stores/player.js";
 	import { maxScore } from "$lib/stores/score.js";
 	import { addLeadingZeros } from "$lib/utils/numbers.js";
+	import { getContext, onMount } from "svelte";
 	let isGameOn: boolean = false;
 	let mode: Modes = Modes.thirdWheel;
+	let isLeaderboardLoading: boolean = false;
 
 	$: {
 		if (isGameOn) {
@@ -22,6 +28,31 @@
 		{ icon: 'rgb', label: 'Third Wheel', mode: Modes.thirdWheel},
 		{ icon: 'order', label: 'Shade Order', mode: Modes.shadeOrder},
 	];
+
+	const createDialog: CreateDialog = getContext('createDialog')
+	
+	function openScoreTable() {
+		isLeaderboardLoading = true;
+
+		getTopPlayers($playerId as string)
+		.then(updatedPlayers => {
+			createDialog({
+				title: 'Leaderboard',
+				content: {
+					component: LeaderBoard,
+					props: {
+						players: updatedPlayers, 
+					}
+				}
+			})
+		})
+		.catch(() => {
+			alert('Something went wrong');
+		})
+		.finally(() => {
+			isLeaderboardLoading = false;
+		});
+	}
 </script>
 
 {#if isGameOn}
@@ -48,9 +79,12 @@
 				</div>
 			{/each}
 		</div>
-		<div class="max-width">
+		<div class="max-width vertical-flex space">
 			<Button label="START" on:click="{() => isGameOn = true}">
 				<img src="/play.svg" alt="Play" style="height: 32px; padding: 0 8px 0 4px;" />
+			</Button>
+			<Button label="Leaderboard" on:click="{openScoreTable}" isLoading="{isLeaderboardLoading}">
+				<img src="/cup.svg" alt="Play" style="height: 32px; padding: 0 8px 0 4px;" />
 			</Button>
 		</div>
 	</div>
